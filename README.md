@@ -12,7 +12,7 @@ Maven 添加依赖：
 <dependency>
   <groupId>io.github.greycode</groupId>
   <artifactId>ocrlite</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.2-RELEASE</version>
 </dependency>
 ```
 
