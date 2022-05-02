@@ -1,6 +1,6 @@
 package com.benjaminwan.ocrlibrary;
 
-import com.github.fommil.jni.JniLoader;
+import io.github.greycode.JniLoader;
 
 public class OcrEngine {
   private int padding;
