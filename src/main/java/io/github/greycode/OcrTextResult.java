@@ -1,4 +1,4 @@
-package com.github.greycode;
+package io.github.greycode;
 
 import com.benjaminwan.ocrlibrary.OcrResult;
 

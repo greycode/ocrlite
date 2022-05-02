@@ -1,4 +1,4 @@
-package com.github.greycode;
+package io.github.greycode;
 
 public class OcrConfig {
 

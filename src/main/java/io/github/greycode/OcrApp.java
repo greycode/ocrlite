@@ -1,4 +1,4 @@
-package com.github.greycode;
+package io.github.greycode;
 
 public class OcrApp {
   public static void main(String[] args) throws Exception {
