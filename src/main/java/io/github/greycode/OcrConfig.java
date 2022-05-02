@@ -5,6 +5,10 @@ public class OcrConfig {
   public OcrConfig() {
   }
 
+  private boolean printLog = false;
+  private boolean splitImg = false;
+  private boolean genImgTxt = false;
+
   private String modelsDir = "";
   private String detName = "dbnet.onnx";
   private String clsName = "angle_net.onnx";
@@ -143,6 +147,51 @@ public class OcrConfig {
 
   public void setMostAngleFlag(int mostAngleFlag) {
     this.mostAngleFlag = mostAngleFlag;
+  }
+
+  public boolean isPrintLog() {
+    return printLog;
+  }
+
+  public void setPrintLog(boolean printLog) {
+    this.printLog = printLog;
+  }
+
+  public boolean isSplitImg() {
+    return splitImg;
+  }
+
+  public void setSplitImg(boolean splitImg) {
+    this.splitImg = splitImg;
+  }
+
+  public boolean isGenImgTxt() {
+    return genImgTxt;
+  }
+
+  public void setGenImgTxt(boolean genImgTxt) {
+    this.genImgTxt = genImgTxt;
+  }
+
+  public OcrConfig copy(OcrConfig cfg) {
+    this.printLog = cfg.printLog;
+    this.splitImg = cfg.splitImg;
+    this.genImgTxt = cfg.genImgTxt;
+    this.modelsDir = cfg.modelsDir;
+    this.detName = cfg.detName;
+    this.clsName = cfg.clsName;
+    this.recName = cfg.recName;
+    this.keysName = cfg.keysName;
+    this.numThread = cfg.numThread;
+    this.padding = cfg.padding;
+    this.maxSideLen = cfg.maxSideLen;
+    this.boxScoreThresh = cfg.boxScoreThresh;
+    this.boxThresh = cfg.boxThresh;
+    this.unClipRatio = cfg.unClipRatio;
+    this.doAngleFlag = cfg.doAngleFlag;
+    this.mostAngleFlag = cfg.mostAngleFlag;
+
+    return this;
   }
 
 }

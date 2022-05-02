@@ -56,6 +56,14 @@ public class OcrDriver {
     return ocrEngine;
   }
 
+  public static OcrEngine initializeEngine(OcrConfig cfg) {
+    OcrEngine ocrEngine = getOcrEngine();
+
+    initEngine(ocrEngine, getOcrConfig().copy(cfg));
+
+    return ocrEngine;
+  }
+
   public static OcrEngine initializeEngine(String modelsDir) {
     OcrEngine ocrEngine = getOcrEngine();
 
@@ -73,9 +81,9 @@ public class OcrDriver {
 
     //------- init Logger -------
     ocrEngine.initLogger(
-      true,
-      false,
-      false
+      cfg.isPrintLog(),
+      cfg.isGenImgTxt(),
+      cfg.isSplitImg()
     );
 
     //------- init Models -------

@@ -64,7 +64,7 @@ public class OcrResult extends OcrOutput {
   }
 
 
-  public  OcrResult copy(double dbNetTime,  ArrayList<TextBlock> textBlocks, double detectTime,  String strRes) {
+  public OcrResult copy(double dbNetTime,  ArrayList<TextBlock> textBlocks, double detectTime,  String strRes) {
     return new OcrResult(dbNetTime, textBlocks, detectTime, strRes);
   }
 
