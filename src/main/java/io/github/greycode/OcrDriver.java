@@ -3,7 +3,9 @@ package io.github.greycode;
 import com.benjaminwan.ocrlibrary.OcrEngine;
 import com.benjaminwan.ocrlibrary.OcrResult;
 
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 public class OcrDriver {
   private OcrDriver() { }
@@ -43,7 +45,11 @@ public class OcrDriver {
       throw new OcrException("Unable to find models on classpath");
     }
 
-    cfg.setModelsDir(url.getPath());
+    try {
+      cfg.setModelsDir(Paths.get(url.toURI()).toString());
+    } catch (URISyntaxException e) {
+      throw new OcrException(e.getMessage());
+    }
 
     initEngine(ocrEngine, cfg);
 
