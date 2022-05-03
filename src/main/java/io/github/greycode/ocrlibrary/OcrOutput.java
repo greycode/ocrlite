@@ -1,4 +1,4 @@
-package com.benjaminwan.ocrlibrary;
+package io.github.greycode.ocrlibrary;
 
 public abstract class OcrOutput {
   // $FF: synthetic method

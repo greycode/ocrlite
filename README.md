@@ -12,11 +12,11 @@ Maven 添加依赖：
 <dependency>
   <groupId>io.github.greycode</groupId>
   <artifactId>ocrlite</artifactId>
-  <version>1.0.2-RELEASE</version>
+  <version>1.0.3-RELEASE</version>
 </dependency>
 ```
 
-将**动态链接库**和**模型文件**放到 ``resouces`` 目录下。
+将最新的 **动态链接库** 和 **模型文件** 放到 ``resouces`` 目录下。
 
 测试代码：
 
@@ -29,3 +29,5 @@ String imagePath = "run-test/test_imgs/c.png";
 OcrTextResult ocrResult = OcrDriver.detect(imagePath);
 ```
 
+
+> 特别注意：1.0.3-RELEASE 为最新的简易封装版本。2.x.x 版本为实验版本，原项目自带的动态链接库不适用。

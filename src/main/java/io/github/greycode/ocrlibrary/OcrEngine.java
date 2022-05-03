@@ -1,4 +1,4 @@
-package com.benjaminwan.ocrlibrary;
+package io.github.greycode.ocrlibrary;
 
 import io.github.greycode.JniLoader;
 

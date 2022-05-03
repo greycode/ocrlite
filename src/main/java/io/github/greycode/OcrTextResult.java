@@ -1,6 +1,6 @@
 package io.github.greycode;
 
-import com.benjaminwan.ocrlibrary.OcrResult;
+import io.github.greycode.ocrlibrary.OcrResult;
 
 import java.io.Serializable;
 import java.util.ArrayList;

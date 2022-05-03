@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.greycode</groupId>
   <artifactId>ocrlite</artifactId>
-  <version>1.0.2-RELEASE</version>
+  <version>2.0.0</version>
   <name>Chinese OCR Lite</name>
   <description>A Chinese OCR tool</description>
   <url>https://github.com/greycode/ocrlite</url>

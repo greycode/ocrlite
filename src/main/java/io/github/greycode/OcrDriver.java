@@ -1,7 +1,7 @@
 package io.github.greycode;
 
-import com.benjaminwan.ocrlibrary.OcrEngine;
-import com.benjaminwan.ocrlibrary.OcrResult;
+import io.github.greycode.ocrlibrary.OcrEngine;
+import io.github.greycode.ocrlibrary.OcrResult;
 
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -82,8 +82,8 @@ public class OcrDriver {
     //------- init Logger -------
     ocrEngine.initLogger(
       cfg.isPrintLog(),
-      cfg.isGenImgTxt(),
-      cfg.isSplitImg()
+      cfg.isSplitImg(),
+      cfg.isGenImgTxt()
     );
 
     //------- init Models -------
