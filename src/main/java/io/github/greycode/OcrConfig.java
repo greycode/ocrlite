@@ -2,6 +2,11 @@ package io.github.greycode;
 
 public class OcrConfig {
 
+  public static final String DEFAULT_DETNAME = "dbnet.onnx";
+  public static final String DEFAULT_CLSNAME = "angle_net.onnx";
+  public static final String DEFAULT_RECNAME = "crnn_lite_lstm.onnx";
+  public static final String DEFAULT_KEYNAME = "keys.txt";
+
   public OcrConfig() {
   }
 
@@ -10,10 +15,10 @@ public class OcrConfig {
   private boolean genImgTxt = false;
 
   private String modelsDir = "";
-  private String detName = "dbnet.onnx";
-  private String clsName = "angle_net.onnx";
-  private String recName = "crnn_lite_lstm.onnx";
-  private String keysName = "keys.txt";
+  private String detName = DEFAULT_DETNAME;
+  private String clsName = DEFAULT_CLSNAME;
+  private String recName = DEFAULT_RECNAME;
+  private String keysName = DEFAULT_KEYNAME;
 
   //------- numThread -------
   private int numThread = Runtime.getRuntime().availableProcessors();

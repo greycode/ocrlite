@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.greycode</groupId>
   <artifactId>ocrlite</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.2</version>
   <name>Chinese OCR Lite</name>
   <description>A Chinese OCR tool</description>
   <url>https://github.com/greycode/ocrlite</url>
@@ -72,7 +72,6 @@
       <id>release</id>
       <build>
         <plugins>
-          <!-- 打包时跳过测试 -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
@@ -145,10 +144,5 @@
       <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
-
-  <dependencies>
-
-  </dependencies>
-
 
 </project>

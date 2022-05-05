@@ -17,9 +17,12 @@ import static java.nio.channels.Channels.newChannel;
 import static java.util.logging.Level.*;
 
 public final class JniLoader {
-  private static final Logger log = Logger.getLogger(JniLoader.class.getName());
   public static final String JNI_EXTRACT_DIR_PROP = "io.github.greycode.jni.dir";
-  private static final Set<String> loaded = new HashSet<String>();
+  private static final Logger log = Logger.getLogger(JniLoader.class.getName());
+  private static final Set<String> loaded = new HashSet<>();
+
+  private JniLoader() {
+  }
 
   public synchronized static void load(String... paths) {
     if (paths == null || paths.length == 0)
@@ -38,7 +41,7 @@ public final class JniLoader {
       log.config("JNI LIB = " + path);
       for (String libPath : javaLibPath) {
         File file = new File(libPath, path).getAbsoluteFile();
-        log.finest("checking " + file);
+        log.info("checking " + file);
         if (file.exists() && file.isFile() && liberalLoad(file, path))
           return;
       }
@@ -54,13 +57,13 @@ public final class JniLoader {
   // side effect: files in the tmpdir that fail to load will be deleted
   private static boolean liberalLoad(File file, String name) {
     try {
-      log.finest("attempting to load " + file);
+      log.info("attempting to load " + file);
       System.load(file.getAbsolutePath());
       log.info("successfully loaded " + file);
       loaded.add(name);
       return true;
     } catch (UnsatisfiedLinkError e) {
-      log.log(FINE, "skipping load of " + file, e);
+      log.log(WARNING, "skipping load of " + file, e);
       String tmpdir = System.getProperty("java.io.tmpdir");
       if (tmpdir != null && tmpdir.trim().length() > 2 && file.getAbsolutePath().startsWith(tmpdir)) {
         log.log(FINE, "deleting " + file);
@@ -107,7 +110,9 @@ public final class JniLoader {
       if (e instanceof SecurityException || e instanceof IOException) {
         log.log(CONFIG, "skipping extraction of " + path, e);
         return null;
-      } else throw new ExceptionInInitializerError(e);
+      } else {
+        throw new ExceptionInInitializerError(e);
+      }
     }
   }
 
@@ -139,8 +144,5 @@ public final class JniLoader {
         log.log(WARNING, file.getAbsolutePath() + " delete denied a second time.", e2);
       }
     }
-  }
-
-  private JniLoader() {
   }
 }

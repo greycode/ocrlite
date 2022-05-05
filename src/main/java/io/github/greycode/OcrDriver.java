@@ -3,9 +3,14 @@ package io.github.greycode;
 import io.github.greycode.ocrlibrary.OcrEngine;
 import io.github.greycode.ocrlibrary.OcrResult;
 
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
+
+import static java.nio.channels.Channels.newChannel;
 
 public class OcrDriver {
   private OcrDriver() { }
@@ -40,20 +45,38 @@ public class OcrDriver {
 
     OcrConfig cfg = getOcrConfig();
 
-    URL url = OcrDriver.class.getClassLoader().getResource("models");
-    if (url == null) {
-      throw new OcrException("Unable to find models on classpath");
-    }
-
-    try {
-      cfg.setModelsDir(Paths.get(url.toURI()).toString());
-    } catch (URISyntaxException e) {
-      throw new OcrException(e.getMessage());
-    }
+    initializeDefaultModel(cfg);
 
     initEngine(ocrEngine, cfg);
 
     return ocrEngine;
+  }
+
+  public static void initializeDefaultModel(OcrConfig cfg) {
+    if (cfg.getModelsDir() == null || "".equals(cfg.getModelsDir())) {
+      cfg.setModelsDir(new File("").getAbsolutePath());
+    }
+    copyDefaultModelFile(cfg.getModelsDir(), OcrConfig.DEFAULT_CLSNAME);
+    copyDefaultModelFile(cfg.getModelsDir(), OcrConfig.DEFAULT_RECNAME);
+    copyDefaultModelFile(cfg.getModelsDir(), OcrConfig.DEFAULT_DETNAME);
+    copyDefaultModelFile(cfg.getModelsDir(), OcrConfig.DEFAULT_KEYNAME);
+  }
+
+  private static void copyDefaultModelFile(String dir, String name) {
+    try (InputStream in = OcrDriver.class.getResourceAsStream("/models/" + name)) {
+      File file = new File(dir, name);
+      if (file.exists() && !file.isFile())
+        throw new IllegalArgumentException(file.getAbsolutePath() + " is not a file.");
+      if (!file.exists()) {
+        file.createNewFile();
+        ReadableByteChannel src = newChannel(in);
+        try (FileChannel dest = new FileOutputStream(file).getChannel()) {
+          dest.transferFrom(src, 0, Long.MAX_VALUE);
+        }
+      }
+    } catch (IOException e) {
+      throw new OcrException(e);
+    }
   }
 
   public static OcrEngine initializeEngine(OcrConfig cfg) {
@@ -132,4 +155,5 @@ public class OcrDriver {
         cfg.getMostAngleFlag() == 1
     );
   }
+
 }
