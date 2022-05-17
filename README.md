@@ -31,7 +31,7 @@ String imagePath = "run-test/test_imgs/c.png";
 OcrTextResult ocrResult = OcrDriver.detect(imagePath);
 ```
 
-###2.x.x 版本
+### 2.x.x 版本
 
 Maven 添加依赖：
 
@@ -56,7 +56,7 @@ String imagePath = "run-test/test_imgs/c.png";
 OcrTextResult ocrResult = OcrDriver.detect(imagePath);
 ```
 
-###3.x.x 版本
+### 3.x.x 版本
 
 Maven 添加依赖：
 
