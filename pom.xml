@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.github.greycode</groupId>
   <artifactId>ocrlite</artifactId>
-  <version>2.0.2</version>
+  <version>3.0.0</version>
   <name>Chinese OCR Lite</name>
   <description>A Chinese OCR tool</description>
   <url>https://github.com/greycode/ocrlite</url>
@@ -42,6 +42,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.0.1</version>
+        <configuration>
+          <charset>UTF-8</charset>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+        </configuration>
         <executions>
           <execution>
             <id>attach-sources</id>
