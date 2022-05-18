@@ -156,4 +156,4 @@ OcrTextResult ocrResult = OcrDriver.detect(imagePath);
 [issues-shield]: https://img.shields.io/github/issues/greycode/ocrlite.svg?style=for-the-badge
 [issues-url]: https://github.com/greycode/ocrlite/issues
 [license-shield]: https://img.shields.io/github/license/greycode/ocrlite.svg?style=for-the-badge
-[license-url]: https://github.com/greycode/ocrlite/blob/master/LICENSE.txt
+[license-url]: https://github.com/greycode/ocrlite/blob/master/LICENSE
