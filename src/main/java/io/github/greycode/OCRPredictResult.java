@@ -1,6 +1,7 @@
 package io.github.greycode;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class OCRPredictResult {
   private List<List<Integer>> box;
@@ -59,5 +60,16 @@ public class OCRPredictResult {
 
   public void setClsLabel(int clsLabel) {
     this.clsLabel = clsLabel;
+  }
+
+  @Override
+  public String toString() {
+    return new StringJoiner(", ", OCRPredictResult.class.getSimpleName() + "[", "]")
+      .add("box=" + box)
+      .add("text='" + text + "'")
+      .add("score=" + score)
+      .add("clsScore=" + clsScore)
+      .add("clsLabel=" + clsLabel)
+      .toString();
   }
 }

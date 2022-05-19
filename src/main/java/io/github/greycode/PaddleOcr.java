@@ -130,7 +130,15 @@ public class PaddleOcr {
   private String imageDir;
 
   public PaddleOcr() {
-    loadLib();
+    loadLibs(
+      OcrConfig.LIB_PADDLE_INFERENCE,
+      OcrConfig.LIB_PADDLE_OCR_JNI
+    );
+    configDefaultProps();
+  }
+
+  public PaddleOcr(String ... libs) {
+    loadLibs(libs);
     configDefaultProps();
   }
 
@@ -155,7 +163,7 @@ public class PaddleOcr {
     this.clsBatchNum = 1;
     this.labelPath = "ppocr_keys_v1.txt";
     this.recBatchNum = 6;
-    this.recImgH = 32;
+    this.recImgH = 48;
     this.recImgW = 320;
     this.useTensorrt = false;
     this.precision = "fp32";
@@ -166,12 +174,13 @@ public class PaddleOcr {
     this.imageDir = ".";
   }
 
-  private void loadLib() {
-    try {
-      JniLoader.load(System.mapLibraryName("paddle_inference"));
-      JniLoader.load(System.mapLibraryName("PaddleOcrJni"));
-    } catch (Exception var2) {
-      var2.printStackTrace();
+  private void loadLibs(String ... libs) {
+    for (String lib : libs) {
+      try {
+        JniLoader.load(System.mapLibraryName(lib));
+      } catch (Exception var2) {
+        var2.printStackTrace();
+      }
     }
   }
 
@@ -184,12 +193,12 @@ public class PaddleOcr {
     boolean useMkldnn, int maxSideLen,
     double detDbThresh, double detDbBoxThresh,
     double detDbUnclipRatio, String detDbScoreMode,
-    boolean useDilation, double clsThresh,
-    int clsBatchNum, String labelPath, int recBatchNum,
-    int recImgH, int recImgW,
+    boolean useDilation,
+    double clsThresh, int clsBatchNum, String labelPath,
+    int recBatchNum, int recImgH, int recImgW,
     boolean useTensorrt, String precision) {
 
-    loadLib();
+    loadLibs();
 
     this.useDet = useDet;
     this.useCls = useCls;

@@ -29,6 +29,17 @@ public class OcrDriver {
     return paddleOcr;
   }
 
+  public static PaddleOcr getPaddleOcr(String libs) {
+    if (paddleOcr == null) {
+      synchronized (OcrDriver.class) {
+        if (paddleOcr == null) {
+          paddleOcr = new PaddleOcr(libs);
+        }
+      }
+    }
+    return paddleOcr;
+  }
+
   ///
   /// 使用默认配置和默认模型文件
   ///

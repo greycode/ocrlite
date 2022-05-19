@@ -11,6 +11,9 @@ public class OcrConfig {
   public static final String DEFAULT_CLS_DIR = "cls";
   public static final String DEFAULT_REC_DIR = "rec_crnn";
 
+  public static final String LIB_PADDLE_INFERENCE = "paddle_inference";
+  public static final String LIB_PADDLE_OCR_JNI = "PaddleOcrJni";
+
   private OcrConfig() {
   }
 }
