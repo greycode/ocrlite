@@ -12,9 +12,29 @@
 
 本项目是对 [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) （3.0.0 以上版本）的一个简单封装，详情请参考 PaddleOCR 文档。
 
-> 3.0.0 以下版本封装的 OCR 为 [chineseocr_lite](https://github.com/DayBreak-u/chineseocr_lite) 
+> 该项目为 Java 客户端，C++ JNI 代码请参考 [PaddleOCRJni](https://github.com/greycode/PaddleOCRJni)
+
+> 3.0.0 以下版本封装的 OCR 为 [chineseocr_lite](https://github.com/DayBreak-u/chineseocr_lite) ，已停止维护更新，但仍然可用且更加轻量级。
 
 ## 如何使用
+
+### 快速上手
+
+> 需要安装 Oracle JDK 和 Maven
+
+请根据自身环境选择下载 Release 中的代码样例包：
+
+ - [demo-win.zip](https://github.com/greycode/ocrlite/releases/download/v3.0.2/demo-win.zip)
+ - [demo-mac.zip](https://github.com/greycode/ocrlite/releases/download/v3.0.2/demo-mac.zip)
+ - [demo-linux.zip](https://github.com/greycode/ocrlite/releases/download/v3.0.2/demo-linux.zip)
+
+下载后解压到工作目录，执行如下命令：
+
+```shell
+cd demo-win
+
+mvn clean compile exec:java -Dexec.mainClass="io.github.greycode.DemoApp"
+```
 
 ### 3.x.x 版本
 
